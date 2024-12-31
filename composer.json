@@ -1,15 +1,7 @@
 {
-    "name": "youcode/biblio-school-repo",
-    "autoload": {
-        "psr-4": {
-            "Youcode\\BiblioSchoolRepo\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "ayoubbr",
-            "email": "ayoub1benmansour@gmail.com"
-        }
-    ],
-    "require": {}
+  "autoload": {
+    "psr-4": {
+      "MyApp\\": "src/"
+    }
+  }
 }
