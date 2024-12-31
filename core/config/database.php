@@ -3,7 +3,7 @@
 class Database
 {
     private $host = "localhost";
-    private $db_name = "contactify";
+    private $db_name = "bibiloSchool";
     private $username = "root";
     private $password = "";
 
@@ -16,7 +16,7 @@ class Database
         try {
         
             $this->connect = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-        
+            echo "Connection working.";
         } catch (PDOException $exception) {
         
             echo "Connection error: " . $exception->getMessage();
