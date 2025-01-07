@@ -3,6 +3,7 @@
 namespace MyApp\Models;
 
 use MyApp\Core\Config\Database;
+use PDO;
 use PDOException;
 
 class Categorie
@@ -110,5 +111,19 @@ class Categorie
             echo "Error: " . $e->getMessage();
             return [];
         }
+    }
+
+    public function getById($id)
+    {
+        $sql = "SELECT titre FROM categories WHERE id = " . $id;
+
+        $result =  $this->dbCnx->pdo->query($sql)->fetch(PDO::FETCH_OBJ);;
+        return $result->titre;
+    }
+
+    public function setCategorie($id, $titre)
+    {
+        $this->id = $id;
+        $this->titre = $titre;
     }
 }

@@ -2,6 +2,9 @@
 
 namespace MyApp\Models;
 
+use MyApp\Core\Config\Database;
+use PDO;
+
 class User
 {
     private int $id;
@@ -11,16 +14,18 @@ class User
     private string $email;
     private string $password;
     private Role $role;
+    private $dbCnx;
 
-    public function __construct($id, $firstname, $lastname, $username, $email, $password, $role)
+    public function __construct()
     {
-        $this->id = $id;
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        $this->username = $username;
-        $this->email = $email;
-        $this->password = $password;
-        $this->role = $role;
+        $this->dbCnx = new Database();
+        $this->id = 0;
+        $this->firstname = '';
+        $this->lastname = '';
+        $this->username = '';
+        $this->email = '';
+        $this->password = '';
+        $this->role = new Role();
     }
 
     public function getId()
@@ -99,5 +104,19 @@ class User
         username: $this->username. email: $this->email.
         password: $this->password. role: $this->role.
         ";
+    }
+
+    public function getById($id)
+    {
+        $sql = "SELECT username FROM users WHERE id = " . $id;
+
+        $result =  $this->dbCnx->pdo->query($sql)->fetch(PDO::FETCH_OBJ);
+        return $result->username;
+    }
+
+    public function setUser($id, $username)
+    {
+        $this->id = $id;
+        $this->username = $username;
     }
 }

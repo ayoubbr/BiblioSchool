@@ -7,7 +7,6 @@ use MyApp\Models\Tag;
 require_once 'C:\wamp64\www\BiblioSchool\BiblioSchool-repo\vendor\autoload.php';
 include '../layout.php';
 
-$livre = new Livre();
 ?>
 
 <div class="page d-flex">
@@ -80,36 +79,55 @@ $livre = new Livre();
         </div>
         <h1 class="p-relative">Livres</h1>
         <div class="projects p-20 bg-white rad-10 m-20">
-            <h2 class="mt-0 mb-20">Projects</h2>
+            <h2 class="mt-0 mb-20">Livres</h2>
             <div class="responsive-table">
                 <table class="fs-15 w-full">
                     <thead>
                         <tr>
+                            <td>User</td>
                             <td>ID</td>
                             <td>Titre</td>
                             <td>Auteur</td>
                             <td>Date de publication</td>
                             <td>Quantite</td>
                             <td>Category</td>
+                            <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Ministry Wikipedia</td>
-                            <td>Ministry Wikipedia</td>
-                            <td>10 May 2022</td>
-                            <td>500</td>
-                            <td>TEST</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>Ministry Wikipedia</td>
-                            <td>Ministry Wikipedia</td>
-                            <td>10 May 2022</td>
-                            <td>500</td>
-                            <td>TEST</td>
-                        </tr>
+                        <?php
+                        $livres = new Livre();
+
+                        foreach ($livres->getAll() as  $livre) {
+                            $livres->setUserId($livre->id_user);
+                            $livres->setId($livre->id);
+                            $livres->setTitre($livre->titre);
+                            $livres->setAuteur($livre->auteur);
+                            $livres->setDateDePublication($livre->dateDePublication);
+                            $livres->setQuantite($livre->quantite);
+                            $livres->setCategoryId($livre->id_categorie);
+
+                        ?>
+
+                            <tr>
+                                <td><?php echo $livres->getUser()->getUsername(); ?></td>
+                                <td><?php echo $livres->getId(); ?></td>
+                                <td><?php echo $livres->getTitre(); ?></td>
+                                <td><?php echo $livres->getAuteur(); ?></td>
+                                <td><?php echo $livres->getDateDePublication(); ?></td>
+                                <td><?php echo $livres->getQuantite(); ?></td>
+                                <td><?php echo $livres->getCategorie()->getTitre(); ?></td>
+                                <td> <a href="#" class='update-icon update-livre' data-titre="<?php echo $livres->getTitre(); ?>" data-id="<?php echo $livres->getId(); ?>">
+                                        <i class="fa-solid fa-pen"></i>
+                                    </a>
+                                    <a href="../../helpers/livreHelper.php?id=<?php echo $livres->getId(); ?>&req=delete" class="delete-icon">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
