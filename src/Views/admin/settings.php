@@ -60,7 +60,7 @@ $a_tag = new Tag();
             <li>
                 <a
                     class="d-flex align-center fs-14 c-black rad-6 p-10"
-                    href="#">
+                    href="./Livres.php">
                     <i class="fa-solid fa-graduation-cap fa-fw"></i>
                     <span>Livres</span>
                 </a>

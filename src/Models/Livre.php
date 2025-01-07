@@ -14,15 +14,8 @@ class Livre
     private Categorie $categorie;
     private User $user;
 
-    public function __construct($id, $titre, $auteur, $quantite, $dateDePublication, $categorie, $user)
+    public function __construct()
     {
-        $this->id = $id;
-        $this->titre = $titre;
-        $this->auteur = $auteur;
-        $this->quantite = $quantite;
-        $this->dateDePublication = $dateDePublication;
-        $this->categorie = $categorie;
-        $this->user = $user;
     }
 
     public function getId()
