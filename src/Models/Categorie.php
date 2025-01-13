@@ -80,7 +80,6 @@ class Categorie
         }
     }
 
-
     public function update()
     {
         try {

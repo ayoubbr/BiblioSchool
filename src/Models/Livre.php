@@ -143,7 +143,6 @@ class Livre
         }
     }
 
-
     public function update()
     {
         try {
@@ -159,7 +158,6 @@ class Livre
             return [];
         }
     }
-
 
     public function delete()
     {
