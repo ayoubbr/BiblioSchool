@@ -1,5 +1,13 @@
 <?php
+
+use MyApp\Models\Categorie;
+
+require_once 'C:\wamp64\www\BiblioSchool\BiblioSchool-repo\vendor\autoload.php';
 include '../layout.php';
+
+$category = new Categorie(7, 'Crime');
+
+// $category->delete();
 ?>
 <div class="page d-flex">
   <div class="sidebar bg-white p-20 p-relative">
@@ -19,7 +27,7 @@ include '../layout.php';
       <li>
         <a
           class="d-flex align-center fs-14 c-black rad-6 p-10"
-          href="#">
+          href="./settings.php">
           <i class="fa-solid fa-gear fa-fw"></i>
           <span>Settings</span>
         </a>
@@ -51,7 +59,7 @@ include '../layout.php';
       <li>
         <a
           class="d-flex align-center fs-14 c-black rad-6 p-10"
-          href="#">
+          href="./Livres.php">
           <i class="fa-solid fa-graduation-cap fa-fw"></i>
           <span>Livres</span>
         </a>

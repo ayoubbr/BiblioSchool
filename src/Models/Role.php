@@ -7,10 +7,10 @@ class Role
     private int $id;
     private string $titre;
 
-    public function __construct($id, $titre)
+    public function __construct()
     {
-        $this->id = $id;
-        $this->titre = $titre;
+        $this->id = 0;
+        $this->titre = '';
     }
 
     public function getId()

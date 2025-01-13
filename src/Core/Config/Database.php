@@ -14,20 +14,22 @@ class Database
     private $username = "root";
     private $password = "";
 
-    public $connect;
+    public $pdo;
 
     public function __construct()
     {
-        $this->connect = null;
+        $this->pdo = null;
         try {
 
-            $this->connect = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-            echo "Connection working.";
+            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->db_name;
+            $this->pdo = new PDO($dsn, $this->username, $this->password);
+            $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $exception) {
 
             echo "Connection error: " . $exception->getMessage();
         }
 
-        return $this->connect;
+        return $this->pdo;
     }
 }

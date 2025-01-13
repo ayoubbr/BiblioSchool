@@ -1,9 +1,7 @@
 <?php
 
 require_once 'C:\wamp64\www\BiblioSchool\BiblioSchool-repo\vendor\autoload.php';
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
